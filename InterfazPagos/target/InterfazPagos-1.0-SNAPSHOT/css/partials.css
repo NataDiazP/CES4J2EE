@@ -1,0 +1,30 @@
+body {
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+a {
+    color : inherit;
+    text-decoration: inherit;
+}
+
+.boton {
+    border: thin solid #5D92B1;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 2px #BBBBBB;
+    color: #000;
+    cursor:pointer;
+    font-family:"Trebuchet MS";
+    padding: 0.4em;
+    text-shadow: 1px 1px 1px #fff;
+    width: 90px;
+    font-size: 15px;
+}
+
+.div_botones{
+    margin-top: 20px;
+}
+
+.div_botones2{
+    margin-left: 460px;
+    margin-top: 20px;
+}
