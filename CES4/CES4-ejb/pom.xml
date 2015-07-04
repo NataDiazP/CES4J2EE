@@ -31,6 +31,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>co.edu.polijic.app_pagos</groupId>
+            <artifactId>Controllers</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>6.0</version>

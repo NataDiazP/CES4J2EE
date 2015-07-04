@@ -18,4 +18,5 @@ public interface CustomerSessionBeanLocal {
 
     void createCustomer(Customer customer) throws PreexistingEntityException, Exception;
     
+ 
 }

@@ -25,7 +25,7 @@ public class CustomerSessionBean implements CustomerSessionBeanRemote, CustomerS
         customerJpaController.create(customer);
     }
 
-    @Override
+//    @Override
     public Customer findCustomerById(int id) {
         CustomerJpaController customerJpaController = new CustomerJpaController(Persistence.createEntityManagerFactory("CES4PU"));
         return customerJpaController.findCustomer(id);

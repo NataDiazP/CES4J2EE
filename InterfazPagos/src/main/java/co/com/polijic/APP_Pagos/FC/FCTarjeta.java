@@ -5,7 +5,7 @@
  */
 package co.com.polijic.APP_Pagos.FC;
 
-import co.edu.polijic.APP_Pagos.Negocio.MgrTarjeta;
+//import co.edu.polijic.pagos.negocio.MgrTarjeta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -42,35 +42,35 @@ public class FCTarjeta extends HttpServlet {
          while (parametros.hasMoreElements()) {
          System.out.println("**" + parametros.nextElement());
          }*/
-        MgrTarjeta mgrTarjeta = new MgrTarjeta();
-        Tarjeta tarjeta = new Tarjeta();
-        switch (request.getParameter("action")) {
-            case "Crear":
-                tarjeta.setOpfranquicia(request.getParameter("franquicia"));
-                tarjeta.setOpestadotarjeta(request.getParameter("estadoTarjeta"));
-                tarjeta.setOptipotarjeta(request.getParameter("tipoTarjeta"));
-                tarjeta.setNmtarjeta(Integer.valueOf(request.getParameter("numeroTarjeta")));
-                tarjeta.setDsmesvencimiento(request.getParameter("mesVencimiento"));
-                tarjeta.setDsaniovencimiento(request.getParameter("anioVencimiento"));
-                tarjeta.setCdseguridad(Integer.valueOf(request.getParameter("codSeguridadTarjeta")));
-                tarjeta.setDsnombretitular(request.getParameter("nombreTitular"));
-                String res = mgrTarjeta.registrarTarjeta(tarjeta) == true ? "Registro almacenado satisfactoriamente" : "Error al intentar guardar el registro";
-                dispatcher = request.getRequestDispatcher("tarjeta.jsp?msg=" + res);
-                dispatcher.forward(request, response);
-                break;
-            case "Consultar":
-                //int nmTarjeta = Integer.valueOf(request.getParameter("numeroTarjeta"));
-                //String res = mgrTarjeta.bus(tarjeta) == true ? "Registro almacenado satisfactoriamente" : "Error al intentar guardar el registro";
-                //dispatcher = request.getRequestDispatcher("tarjeta.jsp?msg=" + res);
-                //dispatcher.forward(request, response);
-                break;
-            case "Modificar":
-                break;
-            case "Eliminar":
-                break;
-            default:
-                throw new Exception("Parametro de envio invalido");
-        }
+//        MgrTarjeta mgrTarjeta = new MgrTarjeta();
+//        Tarjeta tarjeta = new Tarjeta();
+//        switch (request.getParameter("action")) {
+//            case "Crear":
+//                tarjeta.setOpfranquicia(request.getParameter("franquicia"));
+//                tarjeta.setOpestadotarjeta(request.getParameter("estadoTarjeta"));
+//                tarjeta.setOptipotarjeta(request.getParameter("tipoTarjeta"));
+//                tarjeta.setNmtarjeta(Integer.valueOf(request.getParameter("numeroTarjeta")));
+//                tarjeta.setDsmesvencimiento(request.getParameter("mesVencimiento"));
+//                tarjeta.setDsaniovencimiento(request.getParameter("anioVencimiento"));
+//                tarjeta.setCdseguridad(Integer.valueOf(request.getParameter("codSeguridadTarjeta")));
+//                tarjeta.setDsnombretitular(request.getParameter("nombreTitular"));
+//                String res = mgrTarjeta.registrarTarjeta(tarjeta) == true ? "Registro almacenado satisfactoriamente" : "Error al intentar guardar el registro";
+//                dispatcher = request.getRequestDispatcher("tarjeta.jsp?msg=" + res);
+//                dispatcher.forward(request, response);
+//                break;
+//            case "Consultar":
+//                //int nmTarjeta = Integer.valueOf(request.getParameter("numeroTarjeta"));
+//                //String res = mgrTarjeta.bus(tarjeta) == true ? "Registro almacenado satisfactoriamente" : "Error al intentar guardar el registro";
+//                //dispatcher = request.getRequestDispatcher("tarjeta.jsp?msg=" + res);
+//                //dispatcher.forward(request, response);
+//                break;
+//            case "Modificar":
+//                break;
+//            case "Eliminar":
+//                break;
+//            default:
+//                throw new Exception("Parametro de envio invalido");
+//        }
 
     }
 
