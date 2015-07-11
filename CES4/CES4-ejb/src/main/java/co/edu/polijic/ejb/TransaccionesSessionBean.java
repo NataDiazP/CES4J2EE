@@ -6,9 +6,8 @@
 package co.edu.polijic.ejb;
 
 import co.edu.polijic.ejb.interfaces.TransaccionesSessionBeanRemote;
-import co.edu.polijic.entities.exceptions.PreexistingEntityException;
 import co.edu.polijic.pagos.controllers.TransaccionJpaController;
-import static co.edu.polijic.pagos.modelos.RegistroTransaccion_.transaccion;
+import co.edu.polijic.pagos.controllers.exceptions.PreexistingEntityException;
 import co.edu.polijic.pagos.modelos.Transaccion;
 import javax.ejb.Stateless;
 import javax.persistence.Persistence;
@@ -18,12 +17,12 @@ import javax.persistence.Persistence;
  * @author Natalia
  */
 @Stateless
-public class TransaccionesSessionBean implements TransaccionesSessionBeanRemote, TransaccionesSessionBeanLocal {
+public class TransaccionesSessionBean implements TransaccionesSessionBeanRemote {
 
     @Override
-    public void createTransaccion(Transaccion transaccion) throws Exception {
+    public boolean createTransaccion(Transaccion transaccion) throws PreexistingEntityException, Exception {
         TransaccionJpaController transaccionJpaController = new TransaccionJpaController(Persistence.createEntityManagerFactory("appPagos_PU"));
-        transaccionJpaController.create(transaccion);
+        return transaccionJpaController.create(transaccion);
     }
 
 }

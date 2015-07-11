@@ -33,13 +33,14 @@ public class TarjetaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Tarjeta tarjeta) throws PreexistingEntityException, Exception {
+    public boolean create(Tarjeta tarjeta) throws PreexistingEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(tarjeta);
             em.getTransaction().commit();
+            return true;
         } catch (Exception ex) {
             if (findTarjeta(tarjeta.getCdtarjeta()) != null) {
                 throw new PreexistingEntityException("Tarjeta " + tarjeta + " already exists.", ex);

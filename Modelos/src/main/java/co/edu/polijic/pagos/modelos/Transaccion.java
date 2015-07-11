@@ -18,8 +18,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -60,6 +58,8 @@ public class Transaccion implements Serializable {
     @Basic(optional = false)
     @Column(name = "nmcuotaspago")
     private int nmcuotaspago;
+    @Column(name = "cdcomprobante")
+    private String cdcomprobante;
     @JoinColumn(name = "cdtipopago", referencedColumnName = "cdtipopago")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TipoPago cdtipopago;
@@ -75,12 +75,24 @@ public class Transaccion implements Serializable {
         this.cdtransaccion = cdtransaccion;
     }
 
-    public Transaccion(Integer cdtransaccion, int cdtarjetaorigen, int cdtarjetadestino, BigDecimal vltransaccion, int nmcuotaspago) {
+    public Transaccion(Integer cdtransaccion, int cdtarjetaorigen, int cdtarjetadestino, BigDecimal vltransaccion, int nmcuotaspago, String cdcomprobante, TipoPago cdtipopago, List<RegistroTransaccion> registroTransaccionList, List<Tarjeta> tarjetaList) {
         this.cdtransaccion = cdtransaccion;
         this.cdtarjetaorigen = cdtarjetaorigen;
         this.cdtarjetadestino = cdtarjetadestino;
         this.vltransaccion = vltransaccion;
         this.nmcuotaspago = nmcuotaspago;
+        this.cdcomprobante = cdcomprobante;
+        this.cdtipopago = cdtipopago;
+        this.registroTransaccionList = registroTransaccionList;
+        this.tarjetaList = tarjetaList;
+    }
+
+    public String getCdcomprobante() {
+        return cdcomprobante;
+    }
+
+    public void setCdcomprobante(String cdcomprobante) {
+        this.cdcomprobante = cdcomprobante;
     }
 
     public Integer getCdtransaccion() {

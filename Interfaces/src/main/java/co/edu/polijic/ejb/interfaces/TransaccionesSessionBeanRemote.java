@@ -5,6 +5,7 @@
  */
 package co.edu.polijic.ejb.interfaces;
 
+import co.edu.polijic.pagos.controllers.exceptions.PreexistingEntityException;
 import co.edu.polijic.pagos.modelos.Transaccion;
 import javax.ejb.Remote;
 
@@ -15,6 +16,6 @@ import javax.ejb.Remote;
 @Remote
 public interface TransaccionesSessionBeanRemote {
 
-    void createTransaccion(Transaccion transaccion) throws Exception;
+    boolean createTransaccion(Transaccion transaccion) throws PreexistingEntityException, Exception;
     
 }

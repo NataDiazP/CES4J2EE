@@ -39,7 +39,7 @@ public class TransaccionJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Transaccion transaccion) throws PreexistingEntityException, Exception {
+    public boolean create(Transaccion transaccion) throws PreexistingEntityException, Exception {
         if (transaccion.getRegistroTransaccionList() == null) {
             transaccion.setRegistroTransaccionList(new ArrayList<RegistroTransaccion>());
         }
@@ -47,6 +47,9 @@ public class TransaccionJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            
+            
+            
             TipoPago cdtipopago = transaccion.getCdtipopago();
             if (cdtipopago != null) {
                 cdtipopago = em.getReference(cdtipopago.getClass(), cdtipopago.getCdtipopago());
@@ -73,6 +76,7 @@ public class TransaccionJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
+            return true;
         } catch (Exception ex) {
             if (findTransaccion(transaccion.getCdtransaccion()) != null) {
                 throw new PreexistingEntityException("Transaccion " + transaccion + " already exists.", ex);

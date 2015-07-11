@@ -8,7 +8,7 @@
   <name>CES4</name>
   <modules>
     <module>CES4-ear</module>
-    <module>CES4-web</module>
     <module>CES4-ejb</module>
+    <module>../InterfazPagos</module>
   </modules>
 </project>
