@@ -48,8 +48,6 @@ public class TransaccionJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             
-            
-            
             TipoPago cdtipopago = transaccion.getCdtipopago();
             if (cdtipopago != null) {
                 cdtipopago = em.getReference(cdtipopago.getClass(), cdtipopago.getCdtipopago());
@@ -255,7 +253,6 @@ public class TransaccionJpaController implements Serializable {
         q.setParameter("nmtarjetaOrigen", nmCuentaOrigen);
         q.setParameter("nmtarjetaDestino", nmCuentaDestino);
         return q.getResultList();
-
     }
 
     public List<Transaccion> getTransaccionByEstado(String estado) {
