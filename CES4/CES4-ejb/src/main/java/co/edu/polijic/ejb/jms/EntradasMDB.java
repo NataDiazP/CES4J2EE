@@ -6,6 +6,7 @@
 package co.edu.polijic.ejb.jms;
 
 import co.edu.polijic.ejb.PagosUtil;
+import co.edu.polijic.pagos.modelos.Transaccion;
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
@@ -58,7 +59,7 @@ public class EntradasMDB implements MessageListener {
                     QueueSession.AUTO_ACKNOWLEDGE);
 
             System.out.println("Lookup queue");
-            Queue queue = (Queue) context.lookup("/queue/HelloWorldQueue");
+            Queue queue = (Queue) context.lookup("/queue/PagosQueue");
 
             System.out.println("Start connection");
             connection.start();
@@ -66,6 +67,7 @@ public class EntradasMDB implements MessageListener {
             System.out.println("Create consumer");
             MessageConsumer consumer = session.createConsumer(queue);
 
+            consumer.setMessageListener((MessageListener)new Transaccion());    
         } finally {
             if (connection != null) {
                 System.out.println("close the connection");
